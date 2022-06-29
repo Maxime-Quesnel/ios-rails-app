@@ -2,3 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 @import 'actiontext.css';
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
