@@ -4,21 +4,34 @@ class TurboController < ApplicationController
       "settings": {
         "enable-feature-x": true,
 
+        "navbar": {
+          "background": "#888888",
+          "foreground": "#ffffff"
+        },
+        "tabbar": {
+          "background": "#888888",
+          "selected": "#ffffff",
+          "unselected": "#bbbbbb"
+        },
+
         "tabs": [
           {
             "title": "Home",
-            "icon": "house",
-            "path": root_path
+            "icon_ios": "house",
+            "visit": root_path,
+            "protected": false
           },
           {
             "title": "Admin",
-            "icon": "gearshape",
-            "path": posts_path
+            "icon_ios": "gearshape",
+            "visit": posts_path,
+            "protected": true
           },
           {
             title: "Profile",
-            "icon": "person",
-            "path": pages_my_profile_path
+            "icon_ios": "person",
+            "visit": pages_my_profile_path,
+            "protected": true
           }
         ]
       },
@@ -28,6 +41,22 @@ class TurboController < ApplicationController
           "patterns": ["/new$", "/edit$"],
           "properties": {
             "presentation": "modal"
+          }
+        },
+        {
+          "patterns": [
+            "/users/login"
+          ],
+          "properties": {
+            "presentation": "modal"
+          }
+        },
+        {
+          "patterns": [
+            "/users/logout"
+          ],
+          "properties": {
+            "presentation": "replace"
           }
         }
       ]
