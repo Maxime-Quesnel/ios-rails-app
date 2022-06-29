@@ -45,7 +45,7 @@ class TurboController < ApplicationController
         },
         {
           "patterns": [
-            "/users/login"
+            "/users/sign_in"
           ],
           "properties": {
             "presentation": "modal"
