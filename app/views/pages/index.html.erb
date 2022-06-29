@@ -1,0 +1,29 @@
+<% content_for :browser_title, "Home"  %>
+
+
+<% if user_signed_in? %>
+  <h1>Hello <%= current_user.email %></h1>
+<% else %>
+  <h1 id="page-title">Hello Guest</h1>
+<% end %>
+
+<div>
+  <% @posts.each do |post| %>
+
+    <div class="max-w-lg mx-auto">
+      <div class="bg-white shadow-md border border-gray-200 rounded-lg max-w-sm mb-5">
+        <a href="#">
+          <img class="w-full" class="rounded-t-lg" src="https://flowbite.com/docs/images/blog/image-1.jpg" alt="">
+        </a>
+        <div class="p-5 mb-5">
+          <a href="#">
+            <h5 class="text-gray-900 font-bold text-2xl tracking-tight mb-2"><%= post.title %></h5>
+          </a>
+          <p class="font-normal text-gray-700 mb-3"><%= post.content %></p>
+          <%= link_to "Read more", post_path(post), class: "text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center" %>
+        </div>
+      </div>
+    </div>
+
+  <% end %>
+</div>

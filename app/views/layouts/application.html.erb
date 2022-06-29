@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= content_for?(:browser_title) ? yield(:browser_title) : "Hybrid App Ios" %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0">
+    <meta name="turbo:authenticated" content="<%= user_signed_in? %>">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+  </head>
+
+  <body>
+  <% unless turbo? %>
+    <nav class="d-block">
+      Web Navigation (hidden on mobile)
+    </nav>
+  <% end %>
+
+  <% if notice %>
+    <p class="alert alert-success"><%= notice %></p>
+  <% end %>
+  <% if alert %>
+    <p class="alert alert-danger"><%= alert %></p>
+  <% end %>
+
+  <% if current_user.present? %>
+    <span data-test="current-user-email""><%= current_user.email %></span<>
+    <%= button_to "Sign out", destroy_user_session_path, method: :delete, form_class: "d-inline" %>
+  <% else %>
+    <%= link_to "Login", new_user_session_path %>
+  <% end %>
+
+  <%= yield %>
+  </body>
+</html>
