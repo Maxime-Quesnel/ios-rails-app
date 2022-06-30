@@ -1,38 +1,29 @@
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-md w-full space-y-8">
-      <div>
-        <img class="mx-auto h-12 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" alt="Workflow">
-        <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">Sign in to your account</h2>
-      </div>
-      <div class="rounded-md shadow-sm -space-y-px">
-        <div>
-          <%= f.label :email, class: "sr-only" %><br/>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "w-full", placeholder: "email" %>
-        </div>
-        <div>
-          <%= f.label :password, class: "sr-only" %><br/>
-          <%= f.password_field :password, autocomplete: "current-password", class: "w-full",  placeholder: "password" %>
-        </div>
-      </div>
+<div class="flex items-center justify-center h-screen">
+  <div class=" flex flex-col lg:w-80 w-full border border-gray-900 rounded-lg px-8 py-10 ">
+    <div class="text-white mt-10">
+      <h1 class="font-bold text-gray-900 text-4xl">Login</h1>
+    </div>
+    <div class="flex flex-col space-y-8 mt-10 mb-5">
+      <%= f.label :email, class: "sr-only" %><br/>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "border rounded-lg py-3 px-3 border-gray-700 placeholder-gray-500", placeholder: "email" %>
+      <%= f.label :password, class: "sr-only" %><br/>
+      <%= f.password_field :password, autocomplete: "current-password", class: "border rounded-lg py-3 px-3 border-gray-700 placeholder-gray-500" %>
 
-      <div>
-        <% if devise_mapping.rememberable? %>
-          <div class="flex items-center">
-            <%= f.check_box :remember_me, class: "h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded" %>
-            <%= f.label :remember_me, class: "ml-2 block text-sm text-gray-900" %>
-          </div>
-        <% end %>
+      <%= f.submit "Log in", class: "group  w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+    </div>
 
-        <div class="text-sm">
-          <%= render "devise/shared/links" %>
-        </div>
+    <% if devise_mapping.rememberable? %>
+      <div class="flex items-center mb-5">
+        <%= f.check_box :remember_me, class: "h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded" %>
+        <%= f.label :remember_me, class: "ml-2 block text-sm text-gray-900" %>
       </div>
+    <% end %>
 
-      <div class="d-flex justify-center w-full">
-        <%= f.submit "Log in", class: "group  w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
-      </div>
+
+    <div class="text-sm">
+      <%= render "devise/shared/links" %>
     </div>
   </div>
-
+</div>
 <% end %>
