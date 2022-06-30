@@ -7,15 +7,13 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,100;1,300;1,400&display=swap" rel="stylesheet">
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body>
+  <body class="bg-gray-100 font-sans leading-normal">
   <% unless turbo? %>
     <nav class="d-block">
      <%= render partial: "layouts/navigation" %>
@@ -27,13 +25,6 @@
   <% end %>
   <% if alert %>
     <p class="alert alert-danger"><%= alert %></p>
-  <% end %>
-
-  <% if current_user.present? %>
-    <span data-test="current-user-email""><%= current_user.email %></span<>
-    <%= button_to "Sign out", destroy_user_session_path, method: :delete, form_class: "d-inline" %>
-  <% else %>
-    <%= link_to "Login", new_user_session_path %>
   <% end %>
 
   <%= yield %>
